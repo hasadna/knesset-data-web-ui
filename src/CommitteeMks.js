@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import ReactTable from 'react-table'
+import t from './Translations'
 
 
 class CommitteeMks extends Component {
@@ -8,7 +9,7 @@ class CommitteeMks extends Component {
         const columns = [];
         return (
             <div>
-                <h2>נוכחות ח"כים בישיבות ועדה</h2>
+                <h2>{t('The presence of MKs in committee meetings')}</h2>
                 <ReactTable data={data} columns={columns}/>
             </div>
         )
