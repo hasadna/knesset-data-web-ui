@@ -1,12 +1,22 @@
 import React from 'react';
+import Item from './Item';
 
 const TopicBlock = (props) => (
-        <div className='containerDiv'>
+    <div className='containerDiv'>
             {
                 props.topics.map(topic => (
-                    <div className='topicTag'>
-                        <span className='topicCategoryTitle'>{topic.topicCategoryTitle}</span>
-                        <span className='topiCategoryIcon'></span>
+                    <div className='container'>
+                        <div className='topicTag'>
+                            <h1 className='topicCategoryTitle'>{topic.topicCategoryTitle}</h1>
+                            <span className='topicCategoryIcon'></span>
+                        </div>
+                        <div className='items'>
+                            {
+                                topic.items.map(item => (
+                                    <Item item={item}></Item>
+                                ))
+                            }
+                        </div>
                     </div>
                 ))
             }
