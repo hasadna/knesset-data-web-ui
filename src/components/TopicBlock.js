@@ -5,8 +5,8 @@ const TopicBlock = (props) => (
             {
                 props.topics.map(topic => (
                     <div className='topicTag'>
-                        <span className="topicCategoryTitle">{topic.topicCategoryTitle}</span>
-                        <span className="topiCategoryIcon"></span>
+                        <span className='topicCategoryTitle'>{topic.topicCategoryTitle}</span>
+                        <span className='topiCategoryIcon'></span>
                     </div>
                 ))
             }
