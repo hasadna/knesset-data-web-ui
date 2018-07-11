@@ -1,16 +1,17 @@
 .App {
-    width: 100vw;
+  width: 100vw;
 }
 
 .App img {
-    margin: auto;
+  margin: auto;
 }
 
 .App-logo {
-    margin: auto;
-    position: absolute;
-    right: 15px;
-    top: 15px;
+  margin: auto;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  margin: auto;
 }
 
 .App-header {

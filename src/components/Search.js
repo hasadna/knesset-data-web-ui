@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {searchFor} from '../redux/actions/search.action';
 
 class Search extends Component {
 
@@ -23,15 +25,19 @@ class Search extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.onSubmit.bind(this)}>
-        <input className={"inputSearch"}  placeholder={"חפש מה שבא לך"} ref={ref => this.myRef = ref}/>
-        <button >
-          <img src={'assets/images/search.png'} alt={'Search'} width="16px" height="16px"/>
-        </button>
-      </form>
+        <form onSubmit={this.onSubmit.bind(this)}>
+          <input className={"inputSearch"}  placeholder={"חפש מה שבא לך"} ref={ref => this.myRef = ref}/>
+          <button >
+            <img src={'assets/images/search.png'} alt={'Search'} width="16px" height="16px"/>
+          </button>
+        </form>
       </div>
     )
   }
 }
 
-export default Search;
+const mapDispatchToProps = {
+  searchItem: searchFor
+};
+
+export default connect(null, mapDispatchToProps)(Search);
