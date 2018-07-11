@@ -1,12 +1,16 @@
 import React from 'react';
 
-const TopicBlock = (props) => {
-    return (
+const TopicBlock = (props) => (
         <div className='containerDiv'>
-            <div className='topicTag'>
-                <span className="topicCategoryTitle">{this.props.topicCategoryTitle}</span>
-                <span className="topiCategoryIcon"></span>
-            </div>
+            {
+                props.topics.map(topic => (
+                    <div className='topicTag'>
+                        <span className="topicCategoryTitle">{topic.topicCategoryTitle}</span>
+                        <span className="topiCategoryIcon"></span>
+                    </div>
+                ))
+            }
         </div>
     );
-}
+
+export default TopicBlock;
