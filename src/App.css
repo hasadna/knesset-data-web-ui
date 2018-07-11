@@ -36,6 +36,14 @@ float: right;
   font-size: large;
 }
 
+.inputSearch {
+    border-radius: 2em / 5em;
+    width: 250px;
+    height: 20px;
+
+}
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
