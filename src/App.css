@@ -1,6 +1,7 @@
 .App {
   width: 100vw;
 }
+
 .App img {
   margin: auto;
 }
@@ -10,22 +11,41 @@
   position: absolute;
   right: 15px;
   top: 15px;
+  margin: auto;
 }
 
 .App-header {
-  background-color: #a7b4b5;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #a7b4b5;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .title {
-float: right;
-  padding: 20px 0 0;
-  display: block;
-  font-size: 20px;
-  color: #464545;
-  font-weight: 700;
-  margin-right: 80px;
+    float: right;
+    padding: 20px 0 0;
+    display: block;
+    font-size: 20px;
+    color: #464545;
+    font-weight: 700;
+    margin-right: 80px;
 }
 
+.App-intro {
+    font-size: large;
+}
+
+.inputSearch {
+    border-radius: 2em / 5em;
+    width: 250px;
+    height: 20px;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

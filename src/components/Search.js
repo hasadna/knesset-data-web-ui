@@ -7,9 +7,9 @@ class Search extends Component {
   constructor(props) {
     super(props);
 
-    // This binding is necessary to make `this` work in the callback
     this.onSubmit = this.onSubmit.bind(this);
   }
+
 
   onSubmit(e) {
     e.preventDefault();
@@ -18,12 +18,16 @@ class Search extends Component {
     this.myRef.value = '';
   }
 
+
+
+
+
   render() {
     return (
       <div>
         <form onSubmit={this.onSubmit.bind(this)}>
-          <input ref={ref => this.myRef = ref}/>
-          <button>
+          <input className={"inputSearch"}  placeholder={"חפש מה שבא לך"} ref={ref => this.myRef = ref}/>
+          <button >
             <img src={'assets/images/search.png'} alt={'Search'} width="16px" height="16px"/>
           </button>
         </form>
