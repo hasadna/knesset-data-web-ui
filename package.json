@@ -7,10 +7,11 @@
     "bootstrap": "^4.1.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
+    "react-fontawesome": "^1.6.1",
     "react-redux": "^5.0.7",
-    "reactstrap": "^6.3.0"
+    "react-scripts": "1.1.4",
+    "reactstrap": "^6.3.0",
+    "redux": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
