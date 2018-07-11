@@ -1,8 +1,16 @@
 import React from 'react';
 
 const Header = () => (
+    const mock=[
+            {title: ,
+            body: ,
+            },
+            {},
+            {},
+            {}
+        ]
   <main>
-    MAIN
+      <TopicBlock></TopicBlock>
   </main>
 );
 
