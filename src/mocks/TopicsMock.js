@@ -1,4 +1,4 @@
-const mock=[
+export const mock=[
     {topicCategoryTitle: "Committees",
         topicTitle: "Sample Title 1",
         topicSubtitle: "just some crap to see this works",
@@ -17,7 +17,7 @@ const mock=[
         topicUrl: "fakeUrl"}
 ];
 
-const categoryDictionary = [
+export const categoryDictionary = [
     {topicCategoryTitle: "Committees", categoryIcon: "fakeIconUrl", categoryDisplayName: 'ועדות'},
     {topicCategoryTitle: "Ruling", categoryIcon: "fakeIconUrl", categoryDisplayName: 'חקיקה'},
     {topicCategoryTitle: "Votes", categoryIcon: "fakeIconUrl", categoryDisplayName: 'הצבעות'},
