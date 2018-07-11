@@ -1,16 +1,12 @@
 import React from 'react';
 
-
-class topicBlock extends React.Component {
-    render() {
-        return <h1>Hello, {this.props.name}</h1>;
-    }
+const TopicBlock = (props) => {
+    return (
+        <div className='containerDiv'>
+            <div className='topicTag'>
+                <span className="topicCategoryTitle">{this.props.topicCategoryTitle}</span>
+                <span className="topiCategoryIcon"></span>
+            </div>
+        </div>
+    );
 }
-
-const Header = () => (
-  <topicblock>
-
-  </topicblock>
-);
-
-export default Header;
