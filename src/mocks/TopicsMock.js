@@ -1,4 +1,4 @@
-export const mock=[
+export const topicBlockMock=[
     {topicCategoryTitle: "Committees",
         topicTitle: "Sample Title 1",
         topicSubtitle: "just some crap to see this works",
