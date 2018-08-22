@@ -1,5 +1,9 @@
 export const initialState = {
-  searchQuery: "",
+  activeRoute: {
+		url: [],
+		breadCrumbs: []
+  },
+  searchQuery: '',
   searchResults: [
     {
       subject: '',
