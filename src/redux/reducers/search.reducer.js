@@ -1,12 +1,12 @@
-import {initialState} from '../state';
+const initState = {};
 
-export const searchReducer = (state = initialState, action) => {
+export const searchReducer = (state = initState, action) => {
 
   switch (action.type) {
     case 'SEARCH_FOR':
       return {...state, searchQuery: action.payload};
 
-      case 'SEARCH_RESULTS':
+    case 'SEARCH_RESULTS':
       return {...state, searchResults: state.searchResults.push(action.payload)};
 
     default:
