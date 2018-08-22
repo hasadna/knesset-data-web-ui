@@ -1,5 +1,8 @@
 const baseUrl = 'https://oknesset.org';
 export const getDataURLByRoute = (path) => {
+  if(path.charAt(0) === '/'){
+    path = path.substr(1);
+  }
   const query = path.split('/');
   let subject, fileName;
   if (query.length === 1) {
