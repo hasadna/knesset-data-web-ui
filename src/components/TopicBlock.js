@@ -1,20 +1,23 @@
 import React from 'react';
 import Item from './Item';
+import TopicTag from './TopicTag';
+import './TopicBlock.css';
+
+
 
 const TopicBlock = ({topic}) => (
-                    <div className='container'>
-                        <div className='topicTag'>
-                            <h1 className='topicCategoryTitle'>{topic.topicCategoryTitle}</h1>
-                            <span className='topicCategoryIcon'/>
-                        </div>
-                        <div className='items'>
-                            {
-                                topic.items.map(item => (
-                                    <Item item={item}/>
-                                ))
-                            }
-                        </div>
-                    </div>
-    );
+	<article className="Topic-Block">
+		<TopicTag text={topic.topicCategoryTitle}/>
+		<ul className="list-group list-group-flush">
+			{
+				topic.items.map((item, index)=> (
+					<li className="list-group-item">
+						<Item item={item} key={index}/>
+					</li>
+				))
+			}
+		</ul>
+	</article>
+);
 
 export default TopicBlock;
