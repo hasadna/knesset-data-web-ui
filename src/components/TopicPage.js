@@ -10,8 +10,8 @@ const TopicPage = () => (
         <ul className="topic-list topic-list-flush">
             {
                 topicBlockMock.map((topic, index)=> (
-                    <li className="topic-list-item">
-                        <TopicBlock topic={topic} key={index}/>
+                    <li className="topic-list-item" key={index}>
+                        <TopicBlock topic={topic}/>
                     </li>
                 ))
             }

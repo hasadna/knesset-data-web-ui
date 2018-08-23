@@ -11,8 +11,8 @@ const TopicBlock = ({topic}) => (
 		<ul className="list-group list-group-flush">
 			{
 				topic.items.map((item, index)=> (
-					<li className="list-group-item">
-						<Item item={item} key={index}/>
+					<li className="list-group-item" key={index}>
+						<Item item={item}/>
 					</li>
 				))
 			}
