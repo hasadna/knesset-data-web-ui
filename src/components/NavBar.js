@@ -4,7 +4,7 @@ import './NavBar.css';
 
 
 const NavBar = () => (
-	<ul className="NavBar nav">
+	<ul className="NavBar nav ">
 		<li className="nav-item">
 			<NavLink to="/members" activeClassName="selected">ח"כים וסיעות</NavLink>
 		</li>

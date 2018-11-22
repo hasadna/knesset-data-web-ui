@@ -3,6 +3,7 @@
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    font-size: 16px;
 }
 
 .App img {
@@ -11,22 +12,6 @@
 
 .App-logo {
     float: right;
-}
-
-.App-header {
-    height: 150px;
-    padding: 20px;
-    color: white;
-}
-
-.title {
-    float: right;
-    padding: 20px 0 0;
-    display: block;
-    font-size: 20px;
-    color: #464545;
-    font-weight: 700;
-    margin-right: 80px;
 }
 
 .App-intro {

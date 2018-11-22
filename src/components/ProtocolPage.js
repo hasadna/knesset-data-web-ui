@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProtocolPage= () => (
+const ProtocolPage = () => (
 	<p>ProtocolPage</p>
 );
 

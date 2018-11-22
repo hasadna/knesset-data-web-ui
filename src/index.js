@@ -15,12 +15,12 @@ import {faUsers} from '@fortawesome/free-solid-svg-icons'
 library.add(faUsers);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App/>
-    </ConnectedRouter>
-  </Provider>,
-  document.getElementById('root')
+	<Provider store={store}>
+		<ConnectedRouter history={history}>
+			<App/>
+		</ConnectedRouter>
+	</Provider>,
+	document.getElementById('root')
 );
 
 

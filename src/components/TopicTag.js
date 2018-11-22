@@ -7,7 +7,7 @@ import {faUsers} from "@fortawesome/free-solid-svg-icons/index";
 const TopicBlock = ({text}) => (
 	<div className="Topic-Tag">
 		<span className="badge badge-secondary">
-			<FontAwesomeIcon icon={faUsers} />
+			<FontAwesomeIcon icon={faUsers}/>
 		</span>
 		<span className="badge badge-secondary">{text}</span>
 	</div>

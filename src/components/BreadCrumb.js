@@ -1,14 +1,28 @@
 import React from 'react';
+import './BreadCrumb.css'
+import {connect} from 'react-redux';
 
 
-const BreadCrumb = () => (
-	<nav aria-label="breadcrumb">
+const BreadCrumb = ({crumbs}) => (
+	<nav className='BreadCrumb' aria-label="breadcrumb">
 		<ol className="breadcrumb">
-			<li className="breadcrumb-item"><a href="#">בית</a></li>
-			<li className="breadcrumb-item"><a href="#">ועדות</a></li>
-			<li className="breadcrumb-item active" aria-current="page">הכנסת ה-20</li>
+			{
+				crumbs.map((item, index) => (
+					<li key={index} className={'breadcrumb-item' + ((crumbs.length === index + 1) ? ' active' : '')}
+							aria-current={(crumbs.length === index + 1 ? 'page' : '')}>
+						<a href="#">{item}</a>
+					</li>
+				))
+			}
 		</ol>
 	</nav>
 );
 
-export default BreadCrumb;
+
+const mapStateToProps = (state) => {
+	return {
+		crumbs: state.router.location.pathname.split('/')
+	}
+};
+
+export default connect(mapStateToProps)(BreadCrumb);

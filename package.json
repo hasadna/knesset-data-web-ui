@@ -28,6 +28,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "gh-pages": "^1.2.0"
+    "gh-pages": "^1.2.0",
+    "redux-devtools-extension": "^2.13.5"
   }
 }

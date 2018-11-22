@@ -1,0 +1,1 @@
+export const UPDATE_UI_BLOCKS = '[data] Update Active Data';
