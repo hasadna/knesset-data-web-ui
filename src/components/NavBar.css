@@ -1,3 +1,7 @@
+.NavBar {
+    padding: 0;
+}
+
 .NavBar li {
-    padding: 20px;
+    padding: 10px;
 }

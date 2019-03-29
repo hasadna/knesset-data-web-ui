@@ -4,20 +4,19 @@ import TopicTag from './TopicTag';
 import './TopicBlock.css';
 
 
-
 const TopicBlock = ({topic}) => (
-	<article className="Topic-Block">
-		<TopicTag text={topic.topicCategoryTitle}/>
-		<ul className="list-group list-group-flush">
-			{
-				topic.items.map((item, index)=> (
-					<li className="list-group-item">
-						<Item item={item} key={index}/>
-					</li>
-				))
-			}
-		</ul>
-	</article>
+  <article className="Topic-Block">
+    <TopicTag text={topic.title}/>
+    <ul className="list-group list-group-flush">
+      {
+        topic.items.map((item, index) => (
+          <li className="list-group-item" key={index}>
+            <Item item={item}/>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
 );
 
 export default TopicBlock;

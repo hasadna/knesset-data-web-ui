@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://webbeast2018.github.io/knesset-data-web-ui",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
     "@fortawesome/free-regular-svg-icons": "^5.1.0-11",
@@ -27,6 +28,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "gh-pages": "^1.2.0"
+    "gh-pages": "^1.2.0",
+    "redux-devtools-extension": "^2.13.5"
   }
 }

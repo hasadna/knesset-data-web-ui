@@ -10,18 +10,18 @@ import TopicPage from "./components/TopicPage";
 class App extends Component {
   render() {
     return (
-        <div className="App">
-          <Header/>
+      <div className="App">
+        <Header/>
 
-          <Route exact path="/" component={MainPage}/>
-          <Route path="/search" component={MainPage}/>
-          <Route path="/members" component={TopicPage}/>
-          <Route exact path="/committees/" component={TopicPage}/>
-          <Route exact path="/committees/:committeeId" component={TopicPage}/>
-          <Route path="/committees/:committeeId/:meetingId" component={ProtocolPage}/>
+        <Route exact path="/" component={MainPage}/>
+        <Route path="/search" component={MainPage}/>
+        <Route path="/members" component={TopicPage}/>
+        <Route exact path="/committees-by-knesset/" component={TopicPage}/>
+        <Route exact path="/committees-by-knesset/:committeeId" component={TopicPage}/>
+        <Route exact path="/committees-by-knesset/:committeeId/:meetingId" component={ProtocolPage}/>
 
-          <Footer/>
-        </div>
+        <Footer/>
+      </div>
     );
   }
 }

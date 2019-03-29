@@ -1,0 +1,11 @@
+.BreadCrumb {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    margin: 0;
+
+}

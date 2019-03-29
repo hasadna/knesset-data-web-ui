@@ -1,1 +1,1 @@
-export const UPDATE_ACTIVE_DATA = '[data] Update Active Data';
+export const CONVERT_DATA_TO_UI_BLOCK = '[data] Convert data to displayable UI blocks';

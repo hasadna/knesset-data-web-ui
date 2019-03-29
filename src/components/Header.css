@@ -1,6 +1,17 @@
-.App-header {
-    background-color: #a7b4b5;
-    height: 150px;
-    padding: 20px;
-    color: white;
+@media (min-width: 768px) {
+    .App-header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        flex-flow: column nowrap;
+    }
+}
+
+.App-header section {
+    display: flex;
+    width: 100%;
+}
+
+.App-header .App-logo {
+    width: 4rem;
 }

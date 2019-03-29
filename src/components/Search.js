@@ -19,15 +19,12 @@ class Search extends Component {
   }
 
 
-
-
-
   render() {
     return (
       <div>
         <form onSubmit={this.onSubmit.bind(this)}>
-          <input className={"inputSearch"}  placeholder={"חפש מה שבא לך"} ref={ref => this.myRef = ref}/>
-          <button >
+          <input className={"inputSearch"} placeholder={"חפש מה שבא לך"} ref={ref => this.myRef = ref}/>
+          <button>
             <img src={'assets/images/search.png'} alt={'Search'} width="16px" height="16px"/>
           </button>
         </form>
