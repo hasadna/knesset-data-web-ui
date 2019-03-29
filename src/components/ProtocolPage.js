@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProtocolPage = () => (
-	<p>ProtocolPage</p>
+  <p>ProtocolPage</p>
 );
 
 export default ProtocolPage;

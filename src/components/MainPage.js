@@ -1,22 +1,21 @@
 import React from 'react';
-// import {topicBlockMock} from '../mocks/TopicsMock';
 import TopicBlock from './TopicBlock';
 import {connect} from 'react-redux';
 
 const MainPage = ({headBlock, topicBlocks}) => (
-	<div className='containerDiv'>
-		{
-			topicBlocks.map((topic, index) => (
-				<TopicBlock topic={topic} key={index}/>
-			))
-		}
-	</div>
+  <div className='containerDiv'>
+    {
+      topicBlocks.map((topic, index) => (
+        <TopicBlock topic={topic} key={index}/>
+      ))
+    }
+  </div>
 );
 
 const mapStateToProps = (state) => {
-	return {
-		topicBlocks: state.uiBlocks.topicBlocks
-	}
+  return {
+    topicBlocks: state.uiBlocks.topicBlocks
+  }
 };
 
 export default connect(mapStateToProps)(MainPage);

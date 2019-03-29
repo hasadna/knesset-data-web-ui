@@ -3,8 +3,8 @@ import {searchReducer} from './reducers/search.reducer';
 import {uiBlocksReducer} from './reducers/uiBlock.reducer';
 
 export const rootReducer = combineReducers({
-	uiBlocks: uiBlocksReducer,
-	search: searchReducer
+  uiBlocks: uiBlocksReducer,
+  search: searchReducer
 });
 
 /*

@@ -8,14 +8,14 @@ import {rootReducer} from './rootReducer';
 
 export const history = createBrowserHistory();
 const store = createStore(
-	connectRouter(history)(rootReducer), // new root reducer with router state
-	composeWithDevTools(
-		applyMiddleware(
-			routerMiddleware(history), // for dispatching history actions
-			...dataMiddlewares, 			// for dispatching data get and data conversion
-			apiMiddleware   					// for fetching data by API
-		),
-	),
+  connectRouter(history)(rootReducer), // new root reducer with router state
+  composeWithDevTools(
+    applyMiddleware(
+      routerMiddleware(history), // for dispatching history actions
+      ...dataMiddlewares, 			// for dispatching data get and data conversion
+      apiMiddleware   					// for fetching data by API
+    ),
+  ),
 );
 
 // for dev purpose only

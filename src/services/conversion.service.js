@@ -2,8 +2,8 @@ import {BlockData} from '../models/BlockData';
 
 const DATA_TYPE = {
 	MULTI: Symbol('multi'),
-	COMMITTEES: Symbol('committees'),
-	COMMITTEES_PER_KNESSET: Symbol('committees_per_knesset'),
+	COMMITTEES_BY_KNESSET_STATISTICS: Symbol('committees_per_knesset_statistics'),
+	COMMITTEES_FOR_A_KNESSET: Symbol('committees_per_knesset'),
 	COMMITTEE_ITEM: Symbol('committee_item'),
 	COMMITTEE_MEETING: Symbol('committee_meeting'),
 	MEMBERS: Symbol('members'),
@@ -11,12 +11,6 @@ const DATA_TYPE = {
 	MEMBER_ITEM: Symbol('member_item'),
 };
 
-/*
-	for route /members => fetch https://oknesset.org/members/index.json
-	for route /members/35 => fetch https://oknesset.org/members/35.json
-	for route /committees/952 => fetch https://oknesset.org/committees/952.json
-	for route /committees/952/2-0-2071137 => fetch https://oknesset.org/meetings/2/0/2071137.json
-*/
 function dataTypeByRoute(route) {
 	const routeFragments = (route === '/') ? '/' : route.split('/').filter(item => item !== '');
 	let type;
@@ -25,13 +19,15 @@ function dataTypeByRoute(route) {
 			type = DATA_TYPE.MULTI;
 			break;
 
-		case 'committees':
+		case 'committees-by-knesset':
 			if (routeFragments.length === 1) {
-				type = DATA_TYPE.COMMITTEES
+				type = DATA_TYPE.COMMITTEES_BY_KNESSET_STATISTICS;
 			} else if (routeFragments.length === 2) {
-				type = (routeFragments[1].includes('knesset')) ? DATA_TYPE.COMMITTEES_PER_KNESSET : DATA_TYPE.COMMITTEE_ITEM
+				type = DATA_TYPE.COMMITTEES_FOR_A_KNESSET;
 			} else if (routeFragments.length === 3) {
-				type = DATA_TYPE.COMMITTEE_MEETING
+				type = DATA_TYPE.COMMITTEE_ITEM;
+			} else if (routeFragments.length === 4) {
+				type = DATA_TYPE.COMMITTEE_MEETING;
 			}
 			break;
 
@@ -47,7 +43,8 @@ function dataTypeByRoute(route) {
 }
 
 export function convertToUIBlocks(data, route) {
-	const dataType = dataTypeByRoute(route);
+
+  const dataType = dataTypeByRoute(route);
 	let convertedData = data;
 
 	switch (dataType) {
@@ -55,32 +52,29 @@ export function convertToUIBlocks(data, route) {
 			convertedData = convertMultipleTypesToUIBlocks(data);
 			break;
 
-		case DATA_TYPE.COMMITTEES:
-			if (data['knesset_nums']) {
-				convertedData = convertCommitteesToUIBlocks(data);
-			}
+		case DATA_TYPE.COMMITTEES_BY_KNESSET_STATISTICS:
+				convertedData = convertCommitteesStatisticsToUIBlocks(data);
 			break;
 
-		case DATA_TYPE.COMMITTEES_PER_KNESSET:
-			if (data['committees']) {
+		case DATA_TYPE.COMMITTEES_FOR_A_KNESSET:
 				convertedData = convertCommitteesPerKnessetToUIBlocks(data);
-			}
 			break;
+
+		case DATA_TYPE.COMMITTEE_ITEM:
+			convertedData = convertCommitteeItemToUIBlocks(data);
+			break;
+
 
 		case DATA_TYPE.MEMBERS:
-			if (data['keys']) {
 				convertedData = convertMembersToUIBlocks(data);
-			}
 			break;
 
 		case DATA_TYPE.MEMBERS_PER_KNESSET:
-			if (data['factions']) {
 				convertedData = convertMembersPerKnessetToUIBlocks(data);
-			}
 			break;
 
 		default:
-			console.error('Conversion data to UI-Blocks failed - could not recognize dataType');
+			console.error('Conversion data to UI-Blocks failed - could not recognize dataType', dataType);
 	}
 	return convertedData
 }
@@ -98,14 +92,14 @@ function convertMultipleTypesToUIBlocks(data) {
 
 // ====== Committees ====== //
 
-function convertCommitteesToUIBlocks(data) {
+function convertCommitteesStatisticsToUIBlocks(data) {
 	const topic = new BlockData({title: 'ועדות'});
 
-	data['knesset_nums'].forEach(item => {
+	data.forEach(item => {
 		topic.items.push(new BlockData(
 			{
-				title: 'הכנסת ה-' + item['num'],
-				titleUrl: '/committees/knesset-' + item['num'],
+				title: 'הכנסת ה-' + item['knesset_num'],
+				titleUrl: `${currentPath()}/${item['knesset_num']}`,
 				subtitle: item['num_committees'] + ' ועדות'
 			}
 		));
@@ -114,16 +108,35 @@ function convertCommitteesToUIBlocks(data) {
 }
 
 function convertCommitteesPerKnessetToUIBlocks(data) {
+	const knessetNum = 20;
 	const topic = new BlockData({
-		title: 'ועדות הכנסת ה' + data['knesset_num'],
+		title: 'ועדות הכנסת ה' + knessetNum,
 	});
 
-	data['committees'].forEach(committee => {
+	data.forEach(committee => {
 		topic.items.push(new BlockData(
 			{
-				title: committee['name'],
-				titleUrl: `/committees/${committee['id']}`,
-				subtitle: committee['num_meetings'] + ' ישיבות'
+				title: committee['Name'],
+				titleUrl: `${currentPath()}/${committee['CommitteeID']}`,
+				subtitle: committee['num_sessions'] + ' ישיבות'
+			}
+		));
+	});
+	return {topicBlocks: [topic]};
+}
+
+function convertCommitteeItemToUIBlocks(data) {
+	const knessetNum = data['KnessetNum'];
+	const topic = new BlockData({
+		// title: 'ועדות הכנסת ה' + knessetNum,
+	});
+
+	data.forEach(committee => {
+		topic.items.push(new BlockData(
+			{
+				title: committee['committee_name'],
+				titleUrl: `${currentPath()}/${committee['CommitteeSessionID']}`,
+				subtitle: committee['num_sessions'] + ' ישיבות'
 			}
 		));
 	});
@@ -161,4 +174,11 @@ function convertMembersPerKnessetToUIBlocks(data) {
 		));
 	});
 	return {topicBlocks: [topic]};
+}
+
+// ====== utils ====== //
+// get current path (remove last slash("/") if exist)
+function currentPath() {
+	let pathname = window.location.pathname;
+	return (pathname[pathname.length - 1] !== '/') ? pathname : pathname.substring(0, pathname.length - 2);
 }

@@ -8,19 +8,19 @@ import registerServiceWorker from './registerServiceWorker';
 import store, {history} from './redux/store';
 import {Provider} from 'react-redux';
 import {ConnectedRouter} from 'connected-react-router'
-// fontawsome
+// fontawesome
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faUsers} from '@fortawesome/free-solid-svg-icons'
 
 library.add(faUsers);
 
 ReactDOM.render(
-	<Provider store={store}>
-		<ConnectedRouter history={history}>
-			<App/>
-		</ConnectedRouter>
-	</Provider>,
-	document.getElementById('root')
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App/>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root')
 );
 
 
