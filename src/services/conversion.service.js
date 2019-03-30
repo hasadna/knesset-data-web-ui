@@ -187,7 +187,7 @@ function convertLegislationPerKnessetToUIBlocks(data) {
 		topic.items.push(new BlockData(
 			{
 				title: items['Name'],
-				titleUrl: `${currentPath()}/${items['BillID']}`,
+				// titleUrl: `${currentPath()}/${items['BillID']}`,
 				subtitle: 'הצעת חוק ' + items['SubTypeDesc']
 			}
 		));

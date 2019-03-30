@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://webbeast2018.github.io/knesset-data-web-ui",
-  "proxy": "http://localhost:4000",
+  "proxy": "https://api.oknesset.org",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-regular-svg-icons": "^5.8.1",
