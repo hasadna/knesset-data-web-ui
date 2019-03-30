@@ -5,9 +5,9 @@ import './NavBar.css';
 
 const NavBar = () => (
   <ul className="NavBar nav ">
-    <li className="nav-item">
-      <NavLink to="/members" activeClassName="selected">ח"כים וסיעות</NavLink>
-    </li>
+    {/*<li className="nav-item">*/}
+    {/*  <NavLink to="/members" activeClassName="selected">ח"כים וסיעות</NavLink>*/}
+    {/*</li>*/}
     <li className="nav-item">
       <NavLink to="/committees-by-knesset" activeClassName="selected">ועדות</NavLink>
     </li>
