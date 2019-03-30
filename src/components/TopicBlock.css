@@ -1,4 +1,7 @@
 .Topic-Block {
     background-color: white;
-    margin: 20px;
+}
+
+.Topic-Block .list-group-item:first-child {
+    border-top: none;
 }

@@ -6,6 +6,8 @@ const DATA_TYPE = {
 	COMMITTEES_FOR_A_KNESSET: Symbol('committees_per_knesset'),
 	COMMITTEE_ITEM: Symbol('committee_item'),
 	COMMITTEE_MEETING: Symbol('committee_meeting'),
+	LEGISLATION_BY_KNESSET_STATISTICS: Symbol('legislation_per_knesset_statistics'),
+	LEGISLATION_FOR_A_KNESSET: Symbol('legislation_per_knesset'),
 	MEMBERS: Symbol('members'),
 	MEMBERS_PER_KNESSET: Symbol('members_per_knesset'),
 	MEMBER_ITEM: Symbol('member_item'),
@@ -28,6 +30,14 @@ function dataTypeByRoute(route) {
 				type = DATA_TYPE.COMMITTEE_ITEM;
 			} else if (routeFragments.length === 4) {
 				type = DATA_TYPE.COMMITTEE_MEETING;
+			}
+			break;
+
+		case 'legislation-by-knesset':
+			if (routeFragments.length === 1) {
+				type = DATA_TYPE.LEGISLATION_BY_KNESSET_STATISTICS;
+			} else if (routeFragments.length === 2) {
+				type = DATA_TYPE.LEGISLATION_FOR_A_KNESSET;
 			}
 			break;
 
@@ -64,6 +74,13 @@ export function convertToUIBlocks(data, route) {
 			convertedData = convertCommitteeItemToUIBlocks(data);
 			break;
 
+		case DATA_TYPE.LEGISLATION_BY_KNESSET_STATISTICS:
+			convertedData = convertLegislationStatisticsToUIBlocks(data);
+			break;
+
+		case DATA_TYPE.LEGISLATION_FOR_A_KNESSET:
+			convertedData = convertLegislationPerKnessetToUIBlocks(data);
+			break;
 
 		case DATA_TYPE.MEMBERS:
 				convertedData = convertMembersToUIBlocks(data);
@@ -113,12 +130,12 @@ function convertCommitteesPerKnessetToUIBlocks(data) {
 		title: 'ועדות הכנסת ה' + knessetNum,
 	});
 
-	data.forEach(committee => {
+	data.forEach(item => {
 		topic.items.push(new BlockData(
 			{
-				title: committee['Name'],
-				titleUrl: `${currentPath()}/${committee['CommitteeID']}`,
-				subtitle: committee['num_sessions'] + ' ישיבות'
+				title: item['Name'],
+				titleUrl: `${currentPath()}/${item['CommitteeID']}`,
+				subtitle: item['num_sessions'] + ' ישיבות'
 			}
 		));
 	});
@@ -126,17 +143,52 @@ function convertCommitteesPerKnessetToUIBlocks(data) {
 }
 
 function convertCommitteeItemToUIBlocks(data) {
-	const knessetNum = data['KnessetNum'];
 	const topic = new BlockData({
-		// title: 'ועדות הכנסת ה' + knessetNum,
+		title: ''
 	});
 
-	data.forEach(committee => {
+	data.forEach(item => {
 		topic.items.push(new BlockData(
 			{
-				title: committee['committee_name'],
-				titleUrl: `${currentPath()}/${committee['CommitteeSessionID']}`,
-				subtitle: committee['num_sessions'] + ' ישיבות'
+				title: (item['topics'] && item['topics'].length) ? item['topics'][0] : '',
+				titleUrl: `${item['SessionUrl']}`,
+				subtitle: 'ישיבה ' + item['TypeDesc']
+			}
+		));
+	});
+	return {topicBlocks: [topic]};
+}
+
+// ====== Legislation ====== //
+function convertLegislationStatisticsToUIBlocks(data) {
+	const topic = new BlockData({
+		title: 'הצעות חוק'
+	});
+
+	data.forEach(item => {
+		topic.items.push(new BlockData(
+			{
+				title: 'הכנסת ה-' + item['KnessetNum'],
+				titleUrl: `${currentPath()}/${item['KnessetNum']}`,
+				subtitle: item['num_bills'] + ' הצעות חוק'
+			}
+		));
+	});
+	return {topicBlocks: [topic]};
+}
+
+function convertLegislationPerKnessetToUIBlocks(data) {
+	const knessetNum = (data.length > 0) ? data[0]['KnessetNum'] : '';
+	const topic = new BlockData({
+		title: 'הצעות חוק הכנסת ה' + knessetNum,
+	});
+
+	data.forEach(items => {
+		topic.items.push(new BlockData(
+			{
+				title: items['Name'],
+				titleUrl: `${currentPath()}/${items['BillID']}`,
+				subtitle: 'הצעת חוק ' + items['SubTypeDesc']
 			}
 		));
 	});
