@@ -12,8 +12,7 @@ install:
 - bash $HOME/bin/travis_ci_operator.sh init
 - travis_ci_operator.sh docker-login
 script:
-- docker pull uumpa/knesset-data-web-ui:latest
-- docker build -t uumpa/knesset-data-web-ui:latest -t uumpa/knesset-data-web-ui:$TRAVIS_COMMIT --cache-from uumpa/knesset-data-web-ui:latest .
+- docker build -t uumpa/knesset-data-web-ui:latest -t uumpa/knesset-data-web-ui:$TRAVIS_COMMIT .
 deploy:
   provider: script
   script: bash .travis.sh deploy
