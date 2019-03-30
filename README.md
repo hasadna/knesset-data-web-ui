@@ -1,5 +1,5 @@
 # [DEPRECATED]
-Repo moved to *Hasadna* organization [here](https://github.com/hasadna/knesset-data-web-ui)
+Repo moved to *Hasadna* organization - [hasadna/knesset-data-web-ui](https://github.com/hasadna/knesset-data-web-ui)
 
 ---
 
