@@ -16,11 +16,13 @@ class App extends Component {
         <Route exact path="/" component={MainPage}/>
         <Route path="/search" component={MainPage}/>
         <Route path="/members" component={TopicPage}/>
-        <Route exact path="/committees-by-knesset/" component={TopicPage}/>
-        <Route exact path="/committees-by-knesset/:committeeId" component={TopicPage}/>
-        <Route exact path="/committees-by-knesset/:committeeId/:meetingId" component={ProtocolPage}/>
 
-        <Footer/>
+        <Route path="/committees-by-knesset/" component={TopicPage}/>
+        <Route exact path="/committees-by-knesset/:knessetNum/:committeeId/:meetingNum" component={ProtocolPage}/>
+
+        <Route path="/legislation-by-knesset/" component={TopicPage}/>
+
+        {/*<Footer/>*/}
       </div>
     );
   }

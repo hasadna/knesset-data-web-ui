@@ -1,5 +1,21 @@
+:root {
+    font-size: 16px; /* define rem */
+}
+
 html body {
     font-family: sans-serif;
     direction: rtl;
     background-color: #EFEFEF;
+}
+
+/* general styles */
+ul, ol {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+/* general styles - override bootstrap */
+html body .badge {
+    border-radius: 0;
+    font-size: 125%;
 }

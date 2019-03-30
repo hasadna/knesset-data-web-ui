@@ -12,16 +12,7 @@ const NavBar = () => (
       <NavLink to="/committees-by-knesset" activeClassName="selected">ועדות</NavLink>
     </li>
     <li className="nav-item">
-      <NavLink to="/" activeClassName="selected">bla</NavLink>
-    </li>
-    <li className="nav-item">
-      <NavLink to="/" activeClassName="selected">bla</NavLink>
-    </li>
-    <li className="nav-item">
-      <NavLink to="/" activeClassName="selected">bla</NavLink>
-    </li>
-    <li className="nav-item">
-      <NavLink to="/" activeClassName="selected">bla</NavLink>
+      <NavLink to="/legislation-by-knesset" activeClassName="selected">הצעות חוק</NavLink>
     </li>
   </ul>
 );

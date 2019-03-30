@@ -3,9 +3,8 @@ import HeadBlock from "./HeadBlock";
 import TopicBlock from './TopicBlock';
 import {connect} from 'react-redux';
 
-const TopicPage = ({headBlock, topicBlocks}) => (
+const TopicPage = ({topicBlocks}) => (
   <div>
-    <p>TopicPage</p>
     <HeadBlock/>
     <ul className="topic-list topic-list-flush">
       {
@@ -21,7 +20,6 @@ const TopicPage = ({headBlock, topicBlocks}) => (
 
 const mapStateToProps = (state) => {
   return {
-    headBlock: state.uiBlocks.headBlock,
     topicBlocks: state.uiBlocks.topicBlocks
   }
 };

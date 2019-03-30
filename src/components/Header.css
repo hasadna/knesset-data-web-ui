@@ -9,9 +9,15 @@
 
 .App-header section {
     display: flex;
+    align-items: center;
     width: 100%;
 }
 
 .App-header .App-logo {
     width: 4rem;
+}
+
+.App-header-title {
+    font-size: 1.5rem;
+    padding: 10px;
 }
