@@ -1,6 +1,8 @@
 # [DEPRECATED]
 Repo moved to *Hasadna* organization [here](https://github.com/hasadna/knesset-data-web-ui)
 
+---
+
 ### knesset-data-web-ui
 See backend project - [knesset-data-backend](https://github.com/WEBbeast2018/knesset-data-backend)
 
