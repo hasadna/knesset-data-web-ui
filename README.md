@@ -1,4 +1,4 @@
-### knesset-data-web-ui
+# knesset-data-web-ui
 See backend project - [knesset-data-backend](https://github.com/WEBbeast2018/knesset-data-backend)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
